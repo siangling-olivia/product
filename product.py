@@ -13,6 +13,7 @@ for item in items:
 	print(item)
 	print(item[0], 'price is', item[1])
 
-with open('products.csv', 'w') as f:
+with open('products.csv', 'w', encoding='utf-8') as f: # 為了避免有中文的亂碼
+	f.write('Item, Cost, Currency\n')
 	for item in items:
 		f.write(item[0] + ',' + item[1] + ',' + 'NTD' + '\n' )
