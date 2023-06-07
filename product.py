@@ -1,13 +1,18 @@
 # 二維記帳小程式
 
 # 讀取csv檔案+Split
+import os # operating systems
 items = []
-with open('products.csv', 'r', encoding='utf-8') as f:
-	for item in f:
-		if 'Item, Cost' in item:
-			continue
-		name, price = item.strip().split(',')
-		items.append([name, price])
+if os.path.isfile('products.csv'): # 先檢查檔案是否存在
+	print('Find the "products.csv" file.')
+	with open('products.csv', 'r', encoding='utf-8') as f:
+		for item in f:
+			if 'Item, Cost' in item:
+				continue
+			name, price = item.strip().split(',')
+			items.append([name, price])
+else:
+	print('Could not find the file.')
 while True:
 	name = input('Please enter the name of the item: ')
 	if name == 'q':
